@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <form id="loginForm">
+    <form id="signupForm">
       <div class="form_container">
         <label>Email:</label>
         <input type="email" id="email" placeholder="Enter email" />
@@ -19,18 +19,17 @@
         <input type="password" id="password" placeholder="Enter password" />
       </div>
       <div class="button-container">
-        <button type="submit" id="login" style="margin: 0 auto">Login</button>
+        <button type="submit" id="signup">Create</button>
       </div>
       <div class="button-container">
         <button
           id="signup"
-          onclick='event.preventDefault();location.href="signup.html"'
+          onclick='event.preventDefault();location.href="index.html"'
         >
-          Sign Up
+          Login
         </button>
       </div>
     </form>
-
-    <script src="./scripts/login.js" type="module"></script>
+    <script src="./scripts/signup.js" type="module"></script>
   </body>
 </html>

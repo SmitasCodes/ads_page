@@ -8,18 +8,21 @@ import {
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-const registerUser = () => {
+function signup() {
   event.preventDefault();
-  const emailInput = document.querySelector("#email").value;
-  const passwordInput = document.querySelector("#password").value;
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
 
-  createUserWithEmailAndPassword(auth, emailInput, passwordInput)
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log("New user created!");
@@ -30,15 +33,14 @@ const registerUser = () => {
         timestamp: timestamp,
       });
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
+    .catch(function (error) {
+      // show an error message
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      alert(errorCode, errorMessage);
     });
-};
-document.querySelector(".button").addEventListener("click", () => {
-  event.preventDefault();
-});
-document.querySelector("#loginSubmit").addEventListener("click", () => {
-  registerUser();
+}
+
+document.querySelector("#signup").addEventListener("click", () => {
+  signup();
 });
